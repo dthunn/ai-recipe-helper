@@ -3,7 +3,7 @@ import { Redis } from '@upstash/redis'
 
 export const ratelimit = new Ratelimit({
   redis: Redis.fromEnv(),
-  limiter: Ratelimit.slidingWindow(20, '1 d'),
+  limiter: Ratelimit.slidingWindow(20, '1 s'),
   analytics: true,
   prefix: 'ai-recipe-assistant',
 })

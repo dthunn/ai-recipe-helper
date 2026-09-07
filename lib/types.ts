@@ -44,3 +44,15 @@ export interface AskResponse {
   relaxedFilters: string[];
   error?: string;
 }
+
+export interface AdaptedRecipe {
+  name: string;
+  summary: string;
+  ingredients: string[];
+  instructions: string[];
+}
+
+export interface AdaptResponse {
+  adapted: AdaptedRecipe;
+  error?: string;
+}

@@ -71,9 +71,10 @@ export default function RecipeSearch() {
             <h1 className="font-display text-3xl font-semibold text-foreground sm:text-4xl">
               What&rsquo;s in the Pantry
             </h1>
-            <p className="mt-2 max-w-xl text-sm text-muted">
+            <p className="mt-2 max-w-2xl text-sm text-muted">
               Describe a craving, what you have on hand, or a dietary constraint — an LLM turns it into
-              structured filters and pgvector finds the closest matches among 658 recipes.
+              structured filters and pgvector finds the closest matches among 1,223 recipes. Open any
+              recipe and ask the AI to adapt it — vegan, gluten-free, halved — grounded in the original.
             </p>
           </div>
           <ThemeToggle />
