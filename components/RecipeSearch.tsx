@@ -95,7 +95,7 @@ export default function RecipeSearch() {
             <button
               type="submit"
               disabled={loading}
-              className="rounded-full bg-accent px-5 py-2.5 text-sm font-medium text-accent-foreground disabled:opacity-50"
+              className="cursor-pointer rounded-full bg-accent px-5 py-2.5 text-sm font-medium text-accent-foreground disabled:cursor-not-allowed disabled:opacity-50"
             >
               {loading ? "Searching…" : "Search"}
             </button>
@@ -107,7 +107,7 @@ export default function RecipeSearch() {
                 key={example}
                 type="button"
                 onClick={() => runSearch(example)}
-                className="rounded-full border border-panel-border px-3 py-1 text-xs text-muted hover:border-accent hover:text-accent"
+                className="cursor-pointer rounded-full border border-panel-border px-3 py-1 text-xs text-muted hover:border-accent hover:text-accent"
               >
                 {example}
               </button>

@@ -9,7 +9,7 @@ export default function RecipeCard({ recipe, onSelect }: { recipe: RecipeResult;
     <button
       type="button"
       onClick={onSelect}
-      className="flex w-full items-stretch gap-4 rounded-xl border border-panel-border bg-panel p-3 text-left shadow-sm transition hover:-translate-y-0.5 hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+      className="flex w-full cursor-pointer items-stretch gap-4 rounded-xl border border-panel-border bg-panel p-3 text-left shadow-sm transition hover:-translate-y-0.5 hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
     >
       <div className="h-20 w-20 shrink-0 overflow-hidden rounded-lg bg-tag-bg">
         {thumbnail ? (

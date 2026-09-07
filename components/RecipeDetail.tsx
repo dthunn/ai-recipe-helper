@@ -133,9 +133,9 @@ export default function RecipeDetail({ recipe, onClose }: { recipe: RecipeResult
   const showingAdapted = view === "adapted" && adapted;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4" onClick={onClose}>
+    <div className="fixed inset-0 z-50 flex cursor-pointer items-center justify-center bg-black/50 p-4" onClick={onClose}>
       <div
-        className="flex max-h-[85vh] w-full max-w-3xl flex-col overflow-hidden rounded-2xl border border-panel-border bg-panel shadow-xl"
+        className="flex max-h-[85vh] w-full max-w-3xl cursor-auto flex-col overflow-hidden rounded-2xl border border-panel-border bg-panel shadow-xl"
         onClick={(e) => e.stopPropagation()}
       >
         <div className="themed-scroll min-h-0 flex-1 overflow-y-auto p-6">
@@ -145,7 +145,7 @@ export default function RecipeDetail({ recipe, onClose }: { recipe: RecipeResult
               type="button"
               onClick={onClose}
               aria-label="Close"
-              className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-muted hover:bg-tag-bg hover:text-foreground"
+              className="flex h-8 w-8 shrink-0 cursor-pointer items-center justify-center rounded-full text-muted hover:bg-tag-bg hover:text-foreground"
             >
               <X size={18} />
             </button>
@@ -195,7 +195,7 @@ export default function RecipeDetail({ recipe, onClose }: { recipe: RecipeResult
               <button
                 type="button"
                 onClick={() => setView("original")}
-                className={`flex-1 rounded-full px-3 py-1.5 font-medium transition ${
+                className={`flex-1 cursor-pointer rounded-full px-3 py-1.5 font-medium transition ${
                   view === "original" ? "bg-panel text-foreground shadow-sm" : "text-muted"
                 }`}
               >
@@ -204,7 +204,7 @@ export default function RecipeDetail({ recipe, onClose }: { recipe: RecipeResult
               <button
                 type="button"
                 onClick={() => setView("adapted")}
-                className={`flex flex-1 items-center justify-center gap-1.5 rounded-full px-3 py-1.5 font-medium transition ${
+                className={`flex flex-1 cursor-pointer items-center justify-center gap-1.5 rounded-full px-3 py-1.5 font-medium transition ${
                   view === "adapted" ? "bg-panel text-foreground shadow-sm" : "text-muted"
                 }`}
               >
@@ -265,7 +265,7 @@ export default function RecipeDetail({ recipe, onClose }: { recipe: RecipeResult
               <button
                 type="submit"
                 disabled={adapting}
-                className="rounded-full bg-accent px-4 py-2 text-sm font-medium text-accent-foreground disabled:opacity-50"
+                className="cursor-pointer rounded-full bg-accent px-4 py-2 text-sm font-medium text-accent-foreground disabled:cursor-not-allowed disabled:opacity-50"
               >
                 {adapting ? "Adapting…" : "Adapt"}
               </button>
@@ -277,7 +277,7 @@ export default function RecipeDetail({ recipe, onClose }: { recipe: RecipeResult
                   type="button"
                   onClick={() => runAdapt(example)}
                   disabled={adapting}
-                  className="rounded-full border border-panel-border px-3 py-1 text-xs text-muted hover:border-accent hover:text-accent disabled:opacity-50"
+                  className="cursor-pointer rounded-full border border-panel-border px-3 py-1 text-xs text-muted hover:border-accent hover:text-accent disabled:cursor-not-allowed disabled:opacity-50"
                 >
                   {example}
                 </button>
