@@ -39,3 +39,7 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# raw upstream dataset — too large to commit; data/recipes_clean.csv (the
+# sampled subset produced by scripts/sample-recipes.ts) is what's tracked
+data/recipes_full_raw.csv

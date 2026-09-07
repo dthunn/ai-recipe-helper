@@ -49,6 +49,14 @@ export interface SearchResult {
   rating: number | null;
   review_count: number | null;
   calories: number | null;
+  fat_g: number | null;
+  saturated_fat_g: number | null;
+  cholesterol_mg: number | null;
+  sodium_mg: number | null;
+  carbohydrate_g: number | null;
+  fiber_g: number | null;
+  sugar_g: number | null;
+  protein_g: number | null;
   servings: string | null;
   recipe_yield: string | null;
   similarity: number;
@@ -84,9 +92,17 @@ async function runQuery(vectorLiteral: string, params: SearchParams): Promise<Se
     );
   }
 
-  for (const keyword of dietaryKeywords ?? []) {
-    values.push(`%${keyword}%`);
-    conditions.push(`EXISTS (SELECT 1 FROM unnest(keywords) AS kw WHERE kw ILIKE $${values.length})`);
+  // Dietary tags are a sparse folksonomy — "Healthy" and "Very Low Carbs"
+  // rarely co-occur on the same recipe even when both genuinely apply, so
+  // requiring every tag at once (AND) would almost always come up empty.
+  // Matching any one of them (OR) is a much better proxy for "fits this
+  // dietary vibe" than exact multi-tag co-occurrence.
+  if (dietaryKeywords && dietaryKeywords.length > 0) {
+    const keywordConditions = dietaryKeywords.map((keyword) => {
+      values.push(`%${keyword}%`);
+      return `EXISTS (SELECT 1 FROM unnest(keywords) AS kw WHERE kw ILIKE $${values.length})`;
+    });
+    conditions.push(`(${keywordConditions.join(" OR ")})`);
   }
 
   const { rows } = await pool.query<SearchResult>(
@@ -108,6 +124,14 @@ async function runQuery(vectorLiteral: string, params: SearchParams): Promise<Se
       rating,
       review_count,
       calories,
+      fat_g,
+      saturated_fat_g,
+      cholesterol_mg,
+      sodium_mg,
+      carbohydrate_g,
+      fiber_g,
+      sugar_g,
+      protein_g,
       servings,
       recipe_yield,
       1 - (embedding <=> $1::vector) AS similarity
